@@ -25,7 +25,7 @@ int current_pins[4] = {A5, A6, A10, A3};
 
 float initial_current[4];
 
-float temp_readings[6];
+float temp_readings[14];
 
 int time_step = 2 ;//seconds
 
@@ -59,7 +59,7 @@ void setup(){
 
   digital_heat_on = false;
 
-  Serial.print("Time, Digital Heat, Analog Heat, C1, C2, C3, C4, Temp Sensors...\n");
+  Serial.print("Time, Digital Heat, Analog Heat, Set Point, Analog Temp, C1, C2, C3, C4, D1, D2, D3, D4, D5, D6, D7, D8, D8, D9, D10, D11, D12, D13, D14);
 
    for (int i = 0; i < 4; i++)
 
@@ -82,7 +82,7 @@ void loop() {
   // acquire temp readings
   sensors.requestTemperatures();
 
-  for (int i = 0; i < 6; i++)
+  for (int i = 0; i < tempDeviceCount; i++)
   {
     temp_readings[i] = DallasTemperature::toFahrenheit(sensors.getTempCByIndex(i));
   }
@@ -125,6 +125,10 @@ void loop() {
   Serial.print(", ");
   
   Serial.print(set_point_pot);
+
+  // print analog temperature
+  Serial.print(", ");
+  Serial.print(analog_temp_reading);
   
   // print current readings
   for (int i = 0; i < 4; i++)
@@ -133,10 +137,6 @@ void loop() {
     Serial.print(current_readings[i]);
   }
 
-  
-  // print analog temperature
-  Serial.print(", ");
-  Serial.print(analog_temp_reading);
   
   // print temp
   for (int i = 0; i < tempDeviceCount; i++)
