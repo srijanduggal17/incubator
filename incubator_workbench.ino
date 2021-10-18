@@ -59,7 +59,7 @@ void setup(){
 
   digital_heat_on = false;
 
-  Serial.print("Time, Digital Heat, Analog Heat, Set Point, Analog Temp, C1, C2, C3, C4, D1, D2, D3, D4, D5, D6, D7, D8, D8, D9, D10, D11, D12, D13, D14);
+  Serial.print("Time, Digital Heat, Analog Heat, Set Point, Analog Temp, C1, C2, C3, C4, D1, D2, D3, D4, D5, D6, D7, D8, D8, D9, D10, D11, D12, D13, D14\n");
 
    for (int i = 0; i < 4; i++)
 
